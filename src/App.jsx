@@ -1,20 +1,38 @@
 import { useState } from 'react'
-import './App.css'
-import Info from './components/Info'
-import Work from './components/Work'
-import Education from './components/Education'
-import Skill from './components/Skill'
+import './styles/App.css'
+import InfoForm from './components/InfoForm';
+import InfoList from './components/InfoList';
 
 function App() {
+  const [info, setInfo] = useState({name: "", email: "", tel: "", location: "", display: false});
+
+  function addInfo(name, email, tel, location) {
+    console.log("info", info);
+
+    setInfo(() => {
+      return (
+        { name: name, 
+          email: email, 
+          tel: tel, 
+          location: location,
+          display: true
+        }
+      )
+    })
+    }
+
+    function removeInfo() {
+      setInfo({name: "", email: "", tel: "", location: "", display: false});
+    }
+    
+    function editInfo() {
+      setInfo({...info, display: false});
+    }
+
   return (
     <>
-      <Info name={name} mail={mail} phone={phone} location={location} />
-      <h2>Work Experience</h2>
-      <Work />
-      <h2>Education</h2>
-      <Education />
-      <h2>Skills</h2>
-      <Skill />
+      {info.display ? <InfoList {...info} remove={removeInfo} edit={editInfo} /> : <InfoForm {...info} onSubmit={addInfo} />}
+      {}
     </>
   )
 }
