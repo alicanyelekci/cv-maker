@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function InfoForm(props) {
-    const [newInfo, setNewInfo] = useState({name: props.name, email: props.email, tel: props.tel, location: props.location});
+    const [newInfo, setNewInfo] = useState({...props});
 
     function handleSubmit(e) {
         e.preventDefault();
