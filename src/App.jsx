@@ -4,12 +4,14 @@ import InfoForm from './components/InfoForm';
 import InfoList from './components/InfoList';
 import WorkForm from './components/WorkForm';
 import WorkList from './components/WorkList';
+import SkillsForm from './components/SkillsForm';
+import SkillsList from './components/SkillsList';
 
 function App() {
   const [info, setInfo] = useState({name: "", email: "", tel: "", location: "", display: false});
   const [work, setWork] = useState([]);
   const [education, setEducation] = useState();
-  const [skill, setSkill] = useState();
+  const [skills, setSkills] = useState([]);
 
   function addInfo(name, email, tel, location) {
     setInfo(() => {
@@ -40,7 +42,8 @@ function App() {
             description: description, 
             startDate: startDate,
             endDate: endDate
-          }])
+          }
+        ])
       })
     }
     function editWork(id) {
@@ -52,6 +55,22 @@ function App() {
       })
     }
 
+    function addSkill(skill) {
+      setSkills(() => {
+        return ([
+          ...skills,
+          { id: crypto.randomUUID(),
+            skill: skill
+          }
+        ])
+      })
+    }
+    function removeSkill(id) {
+      setSkills(skills => {
+        return (skills.filter(skill => skill.id !== id));
+      })
+    }
+
   return (
     <>
       {info.display ? <InfoList {...info} remove={removeInfo} edit={editInfo} /> : <InfoForm {...info} onSubmit={addInfo} />}
@@ -60,6 +79,8 @@ function App() {
       <WorkForm {...work} onSubmit={addWork} />
       <h2>Education</h2>
       <h2>Skills</h2>
+      <SkillsForm onSubmit={addSkill} />
+      <SkillsList skills={skills} removeSkill={removeSkill} />
     </>
   )
 }
