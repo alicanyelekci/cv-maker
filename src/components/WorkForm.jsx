@@ -1,21 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function WorkForm(props) {
-    const [newWork, setNewWork] = useState({});
+export default function WorkForm({ work, onSubmit }) {
+    const [newWork, setNewWork] = useState({...work});
+
+    useEffect(() => {
+        setNewWork({...work});
+      }, [work]);
 
     function handleSubmit(e) {
         e.preventDefault();
 
         if(newWork.company === '' || newWork.title === '' || newWork.startDate === '') return;
-        props.onSubmit(
+        onSubmit(
             newWork.company, 
             newWork.title, 
             newWork.description, 
             newWork.startDate, 
-            newWork.endDate === '' ? 'present' : newWork.endDate
-            );
+            newWork.endDate === '' || newWork.endDate === undefined ? 'Present' : newWork.endDate
+        );
 
-        setNewWork({id: '', company: '', title: '', description: '', startDate: '', endDate: ''});
+        setNewWork({company: '', title: '', description: '', startDate: '', endDate: ''});
     }
 
     return(

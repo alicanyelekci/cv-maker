@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './styles/App.css'
 import InfoForm from './components/InfoForm';
 import InfoList from './components/InfoList';
@@ -10,9 +10,10 @@ import SkillsList from './components/SkillsList';
 function App() {
   const [info, setInfo] = useState({name: "", email: "", tel: "", location: "", display: false});
   const [work, setWork] = useState([]);
-  const [education, setEducation] = useState();
+  const [editedWork, setEditedWork] = useState({});
+  // const [education, setEducation] = useState();
   const [skills, setSkills] = useState([]);
-
+  
   function addInfo(name, email, tel, location) {
     setInfo(() => {
       return (
@@ -47,7 +48,11 @@ function App() {
       })
     }
     function editWork(id) {
-      
+      let edit = work.filter(job => job.id === id);
+      setEditedWork({...edit});
+      setWork(work => {
+        return work.filter(job => job.id !== id)
+      })
     }
     function removeWork(id) {
       setWork(work => {
@@ -75,12 +80,13 @@ function App() {
     <>
       {info.display ? <InfoList {...info} remove={removeInfo} edit={editInfo} /> : <InfoForm {...info} onSubmit={addInfo} />}
       <h2>Work Experience</h2>
+      <WorkForm work={editedWork[0]} onSubmit={addWork} />
       <WorkList work={work} editWork={editWork} removeWork={removeWork} />
-      <WorkForm {...work} onSubmit={addWork} />
       <h2>Education</h2>
       <h2>Skills</h2>
       <SkillsForm onSubmit={addSkill} />
       <SkillsList skills={skills} removeSkill={removeSkill} />
+      <button>Download CV ↓</button>
     </>
   )
 }
