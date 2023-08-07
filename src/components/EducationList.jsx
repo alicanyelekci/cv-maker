@@ -5,7 +5,7 @@ export default function EducationList({ education, editEducation, removeEducatio
         <>
             {education.map(ed => {
                 return (
-                    <WorkItem {...ed} key={ed.id} editEducation={editEducation} removeEducation={removeEducation} />
+                    <EducationItem {...ed} key={ed.id} editEducation={editEducation} removeEducation={removeEducation} />
                 )
             })}
         </>
