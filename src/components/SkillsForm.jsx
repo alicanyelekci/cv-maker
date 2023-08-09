@@ -12,9 +12,9 @@ export default function SkillsForm(props) {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className="skills-form" onSubmit={handleSubmit}>
             <input value={newSkill} onChange={(e) => setNewSkill(e.target.value)} type="text" placeholder="Skill" />
-            <button>Add</button>
+            <button className="add-btn">Add Skill</button>
         </form>
     )
 }

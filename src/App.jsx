@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import './styles/App.css'
+import { useState, useEffect } from 'react';
+import { Document, Page } from 'react-pdf';
+
 import InfoForm from './components/InfoForm';
 import InfoList from './components/InfoList';
 import WorkForm from './components/WorkForm';
@@ -120,7 +121,7 @@ function App() {
     }
 
     function handleDownload() {
-      
+
     }
 
   return (
