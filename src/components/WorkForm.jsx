@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function WorkForm({ work, onSubmit }) {
+export default function WorkForm({ work, onSubmit, show, setShow }) {
     const [newWork, setNewWork] = useState({...work});
 
     useEffect(() => {
@@ -20,6 +20,7 @@ export default function WorkForm({ work, onSubmit }) {
         );
 
         setNewWork({company: '', title: '', description: '', startDate: '', endDate: ''});
+        setShow({...show, work: false});
     }
 
     return(
