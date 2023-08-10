@@ -47,10 +47,6 @@ h2 {
 .work-form,
 .education-form,
 .skills-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  
   border-radius: 10px;
   border: 1px solid transparent;
   padding: 2em 2em;
@@ -58,4 +54,43 @@ h2 {
   font-weight: 500;
   font-family: inherit;
   background-color: white;
+}
+.info-form,
+.work-form,
+.education-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.skills-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.add-btn {
+  grid-column: 1 / -1;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.info-item > h1 {
+  margin: 0;
+}
+.info-item > .details,
+.info-item > .buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  align-items: center;
+}
+.info-item > .details img {
+  width: 25px;
+  height: 25px;
 }

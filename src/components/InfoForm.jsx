@@ -12,11 +12,15 @@ export default function InfoForm(props) {
 
     return(
         <form className="info-form" onSubmit={handleSubmit} >
-            <input value={newInfo.name} onChange={e => setNewInfo({...newInfo, name: e.target.value})} type="text" placeholder="Name" />
-            <input value={newInfo.email} onChange={e => setNewInfo({...newInfo, email: e.target.value})} type="email" placeholder="Email" />
-            <input value={newInfo.tel} onChange={e => setNewInfo({...newInfo, tel: e.target.value})} type="number" placeholder="Phone Number" />
-            <input value={newInfo.location} onChange={e => setNewInfo({...newInfo, location: e.target.value})} type="text" placeholder="Location" />
-            <button className="add-btn">Add Info</button>
+            <label htmlFor="name">Full Name*</label>
+            <input value={newInfo.name} onChange={e => setNewInfo({...newInfo, name: e.target.value})} type="text" id="name" placeholder="Name" />
+            <label htmlFor="email">Email*</label>
+            <input value={newInfo.email} onChange={e => setNewInfo({...newInfo, email: e.target.value})} type="email" id="email" placeholder="Email" />
+            <label htmlFor="tel">Phone Number</label>
+            <input value={newInfo.tel} onChange={e => setNewInfo({...newInfo, tel: e.target.value})} type="text" id="tel" placeholder="Phone Number" />
+            <label htmlFor="location">Location</label>
+            <input value={newInfo.location} onChange={e => setNewInfo({...newInfo, location: e.target.value})} type="text" id="location" placeholder="Location" />
+            <button className="add-btn">Save Info</button>
         </form>
     )
 }

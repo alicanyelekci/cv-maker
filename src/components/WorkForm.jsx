@@ -16,7 +16,7 @@ export default function WorkForm({ work, onSubmit }) {
             newWork.title, 
             newWork.description, 
             newWork.startDate, 
-            newWork.endDate === '' || newWork.endDate === undefined ? 'Present' : newWork.endDate
+            newWork.endDate
         );
 
         setNewWork({company: '', title: '', description: '', startDate: '', endDate: ''});
@@ -24,14 +24,17 @@ export default function WorkForm({ work, onSubmit }) {
 
     return(
         <form className="work-form" onSubmit={handleSubmit}>
-            <input value={newWork.company} onChange={e => setNewWork({...newWork, company: e.target.value})} type="text" placeholder="Company Name" />
-            <input value={newWork.title} onChange={e => setNewWork({...newWork, title: e.target.value})} type="text" placeholder="Title" />
-            <textarea value={newWork.description} onChange={e => setNewWork({...newWork, description: e.target.value})} rows="5" cols="30" placeholder="Description"></textarea>
-            <label htmlFor="start">Start Date</label>
+            <label htmlFor="company">Company Name*</label>
+            <input value={newWork.company} onChange={e => setNewWork({...newWork, company: e.target.value})} type="text" id="company" placeholder="Company Name" />
+            <label htmlFor="title">Title*</label>
+            <input value={newWork.title} onChange={e => setNewWork({...newWork, title: e.target.value})} type="text" id="title" placeholder="Title" />
+            <label htmlFor="description">Description</label>
+            <textarea value={newWork.description} onChange={e => setNewWork({...newWork, description: e.target.value})} rows="5" cols="30" id="description" placeholder="Description"></textarea>
+            <label htmlFor="start">Start Date*</label>
             <input value={newWork.startDate} onChange={e => setNewWork({...newWork, startDate: e.target.value})} type="date" id="start" />
             <label htmlFor="end">End Date</label>
             <input value={newWork.endDate} onChange={e => setNewWork({...newWork, endDate: e.target.value})} type="date" id="end" />
-            <button className="add-btn">Add Work Experience</button>
+            <button className="add-btn">Save Work Experience</button>
         </form>
     )
 }

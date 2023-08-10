@@ -14,7 +14,7 @@ export default function SkillsForm(props) {
     return(
         <form className="skills-form" onSubmit={handleSubmit}>
             <input value={newSkill} onChange={(e) => setNewSkill(e.target.value)} type="text" placeholder="Skill" />
-            <button className="add-btn">Add Skill</button>
+            <button className="add-btn">Save Skill</button>
         </form>
     )
 }

@@ -1,6 +1,6 @@
 export default function SkillsItem({ skill, id, removeSkill}) {
     return (
-        <li>
+        <li className="skills-item">
             <label>{skill}</label>
             <button onClick={() => removeSkill(id)}>X</button>
         </li>
