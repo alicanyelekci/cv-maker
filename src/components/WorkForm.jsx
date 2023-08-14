@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function WorkForm({ work, onSubmit, show, setShow }) {
+export default function WorkForm({ work, onSubmit }) {
     const [newWork, setNewWork] = useState({...work});
 
     useEffect(() => {
@@ -10,19 +10,19 @@ export default function WorkForm({ work, onSubmit, show, setShow }) {
     function handleSubmit(e) {
         e.preventDefault();
 
-        if(newWork.company === '' || newWork.title === '' || newWork.startDate === '') return;
+        if(newWork.company === '' || newWork.title === '' || newWork.startDate === '' || newWork.company === undefined || newWork.title === undefined || newWork.startDate === undefined) return;
+        
         onSubmit(
             newWork.company, 
             newWork.title, 
             newWork.description, 
             newWork.startDate, 
             newWork.endDate
-        );
+            );
 
-        setNewWork({company: '', title: '', description: '', startDate: '', endDate: ''});
-        setShow({...show, work: false});
+        setNewWork({company: '', title: '', description: '', startDate: '', endDate: ''}); 
     }
-
+        
     return(
         <form className="work-form" onSubmit={handleSubmit}>
             <label htmlFor="company">Company Name*</label>

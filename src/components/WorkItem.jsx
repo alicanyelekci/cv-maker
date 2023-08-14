@@ -5,7 +5,7 @@ export default function WorkItem({ id, company, title, description, startDate, e
         <div className="work-item">
             <div className='head'>
                 <h3>{title} - {company.toUpperCase()}</h3>
-                <i>{moment(startDate).format("MM/YYYY")} - {moment(endDate).format("MM/YYYY") === 'Invalid date' ? 'Present' : moment(endDate).format("MM/YYYY")}</i>
+                <i>{moment(startDate).format("MM/YYYY")} - {moment(endDate).format("MM/YYYY") === 'Invalid date' || endDate === undefined ? 'Present' : moment(endDate).format("MM/YYYY")}</i>
             </div>
             <div className='body'>
                 <p>{description}</p>

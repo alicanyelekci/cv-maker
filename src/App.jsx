@@ -19,7 +19,6 @@ function App() {
   const [sortedEducation, setSortedEducation] = useState([]);
   const [editedEducation, setEditedEducation] = useState({});
   const [skills, setSkills] = useState([]);
-  const [show, setShow] = useState({work: false, education: true});
 
   useEffect(() => {
     const sortedWork = [...work].sort((a, b) => (a.startDate > b.startDate) ? -1 : (b.startDate > a.startDate) ? 1 : 0);
@@ -63,10 +62,9 @@ function App() {
             endDate: endDate
           }
         ])
-      })
+      });
     }
     function editWork(id) {
-      setShow({...show, work: true});
       let edit = work.filter(job => job.id === id);
       setEditedWork({...edit});
       setWork(work => {
@@ -122,28 +120,37 @@ function App() {
       })
     }
 
-    function showWorkForm(){
-
-    }
-
     function handleDownload() {
 
     }
 
   return (
-    <div className='container'>
-      {info.display ? <InfoList {...info} remove={removeInfo} edit={editInfo} /> : <InfoForm {...info} onSubmit={addInfo} />}
-      <h2>Work Experience</h2>
-      {show.work ? <WorkForm show={show} setShow={setShow} work={editedWork[0]} onSubmit={addWork} /> : <button className='show-btn' onClick={() => setShow({...show, work: true})}>Add Work Experience</button>}
-      {/* <WorkForm work={editedWork[0]} onSubmit={addWork} /> */}
-      <WorkList work={sortedWork} editWork={editWork} removeWork={removeWork} />
-      <h2>Education</h2>
-      <EducationForm education={editedEducation[0]} onSubmit={addEducation} />
-      <EducationList education={sortedEducation} editEducation={editEducation} removeEducation={removeEducation} />
-      <h2>Skills</h2>
-      <SkillsForm onSubmit={addSkill} />
-      <SkillsList skills={skills} removeSkill={removeSkill} />
-      <button className='download-btn' onClick={handleDownload}>Download CV ↓</button>
+    <div className="container">
+      <div className="header">
+        <h1>CV Maker</h1>
+      </div>
+      <div className="body">
+        {info.display ? <InfoList {...info} remove={removeInfo} edit={editInfo} /> : <InfoForm {...info} onSubmit={addInfo} />}
+        <h2>WORK EXPERIENCE</h2>
+        <WorkForm work={editedWork[0]} onSubmit={addWork} />
+        <WorkList work={sortedWork} editWork={editWork} removeWork={removeWork} />
+        <h2>EDUCATION</h2>
+        <EducationForm education={editedEducation[0]} onSubmit={addEducation} />
+        <EducationList education={sortedEducation} editEducation={editEducation} removeEducation={removeEducation} />
+        <h2>SKILLS</h2>
+        <SkillsForm onSubmit={addSkill} />
+        <SkillsList skills={skills} removeSkill={removeSkill} />
+        <button className='download-btn' onClick={handleDownload}>Download CV ↓</button>
+      </div>
+      <div className="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear())
+          </script>
+          alicanyelekci
+        </p>
+      </div>
     </div>
   )
 }

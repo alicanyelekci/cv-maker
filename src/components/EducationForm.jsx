@@ -10,7 +10,7 @@ export default function EducationForm({ education, onSubmit }) {
     function handleSubmit(e) {
         e.preventDefault();
 
-        if(newEducation.school === '' || newEducation.startDate === '') return;
+        if(newEducation.school === '' || newEducation.school === undefined || newEducation.startDate === '' || newEducation.startDate === undefined) return;
         onSubmit(
             newEducation.school, 
             newEducation.department, 
