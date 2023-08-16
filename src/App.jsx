@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Document, Page } from 'react-pdf';
 
-import InfoForm from './components/InfoForm';
-import InfoList from './components/InfoList';
-import WorkForm from './components/WorkForm';
-import WorkList from './components/WorkList';
-import EducationForm from './components/EducationForm';
-import EducationList from './components/EducationList';
-import SkillsForm from './components/SkillsForm';
-import SkillsList from './components/SkillsList';
+import Info from './components/Info';
+import Work from './components/Work';
+import Education from './components/Education';
+import Skills from './components/Skills';
+import DownloadPage from './components/DownloadPage';
+import Footer from './components/Footer';
 
 function App() {
   const [info, setInfo] = useState({name: "", email: "", tel: "", location: "", display: false});
@@ -120,37 +117,19 @@ function App() {
       })
     }
 
-    function handleDownload() {
-
-    }
-
   return (
     <div className="container">
       <div className="header">
         <h1>CV Maker</h1>
       </div>
       <div className="body">
-        {info.display ? <InfoList {...info} remove={removeInfo} edit={editInfo} /> : <InfoForm {...info} onSubmit={addInfo} />}
-        <h2>WORK EXPERIENCE</h2>
-        <WorkForm work={editedWork[0]} onSubmit={addWork} />
-        <WorkList work={sortedWork} editWork={editWork} removeWork={removeWork} />
-        <h2>EDUCATION</h2>
-        <EducationForm education={editedEducation[0]} onSubmit={addEducation} />
-        <EducationList education={sortedEducation} editEducation={editEducation} removeEducation={removeEducation} />
-        <h2>SKILLS</h2>
-        <SkillsForm onSubmit={addSkill} />
-        <SkillsList skills={skills} removeSkill={removeSkill} />
-        <button className='download-btn' onClick={handleDownload}>Download CV ↓</button>
+        <Info info={info} addInfo={addInfo} editInfo={editInfo} removeInfo={removeInfo} />
+        <Work editedWork={editedWork} sortedWork={sortedWork} addWork={addWork} editWork={editWork} removeWork={removeWork} />
+        <Education editedEducation={editedEducation} sortedEducation={sortedEducation} addEducation={addEducation} editEducation={editEducation} removeEducation={removeEducation} />
+        <Skills skills={skills} addSkill={addSkill} removeSkill={removeSkill} />
+        <DownloadPage name={info.name} />
       </div>
-      <div className="footer">
-        <p>
-          Copyright ©
-          <script>
-            document.write(new Date().getFullYear())
-          </script>
-          alicanyelekci
-        </p>
-      </div>
+      <Footer />
     </div>
   )
 }
