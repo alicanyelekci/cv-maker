@@ -5,9 +5,9 @@ export default function InfoList({ name, email, tel, location, remove, edit }) {
             <div className="details">
                 <img src="src/assets/mail.png"/>
                 <p>{email}</p>
-                <img src="src/assets/telephone.png"/>
+                {tel === '' ? null : <img src="src/assets/telephone.png"/>}
                 <p>{tel}</p>
-                <img src="src/assets/location.png"/>
+                {location === '' ? null : <img src="src/assets/location.png"/>}
                 <p>{location}</p>
             </div>
             <div className="buttons">

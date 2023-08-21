@@ -119,9 +119,7 @@ function App() {
 
   return (
     <div className="container">
-      <div className="header">
-        <h1>CV Maker</h1>
-      </div>
+      <h1 className="header">CV MAKER</h1>
       <div className="body">
         <Info info={info} addInfo={addInfo} editInfo={editInfo} removeInfo={removeInfo} />
         <Work editedWork={editedWork} sortedWork={sortedWork} addWork={addWork} editWork={editWork} removeWork={removeWork} />
