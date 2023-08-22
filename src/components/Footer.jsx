@@ -6,7 +6,7 @@ export default function Footer() {
           <script>
             document.write(new Date().getFullYear())
           </script>
-          alicanyelekci
+          <a target="_blank" href="https://github.com/alicanyelekci">alicanyelekci</a>
         </p>
       </div>
     )
